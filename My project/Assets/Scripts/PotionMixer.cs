@@ -5,7 +5,12 @@ using TMPro;
 
 public class PotionMixer : MonoBehaviour
 {
-    private int[] CurrentMix = new int[3]; // Initialize an array of size 3 (Oxygen, Hydrogen, Carbon)
+    private int[] CurrentMix = new int[5]; // Initialize an array of size 5 (Oxygen, Hydrogen, Carbon, Sodium, Chlorine)
+    private int oxygenIndex = 0; // Index for Oxygen
+    private int hydrogenIndex = 1; // Index for Hydrogen
+    private int carbonIndex = 2; // Index for Carbon
+    private int sodiumIndex = 3; // Index for Sodium
+    private int chlorineIndex = 4; // Index for Chlorine
     public TextMeshProUGUI ElementCountText; // Reference to the TextMeshProUGUI component for displaying element counts
     public TextMeshProUGUI Output; // Reference to the TextMeshProUGUI component for displaying the output message
 
@@ -16,6 +21,46 @@ public class PotionMixer : MonoBehaviour
     }
 
     void Update()
+    {
+        PotionController();
+    }
+
+    public void AddOxygen()
+    {
+        CurrentMix[oxygenIndex]++;
+        UpdateElementCountText();
+    }
+
+    public void AddHydrogen()
+    {
+        CurrentMix[hydrogenIndex]++;
+        UpdateElementCountText();
+    }
+
+    public void AddCarbon()
+    {
+        CurrentMix[carbonIndex]++;
+        UpdateElementCountText();
+    }
+
+    public void AddSodium()
+    {
+        CurrentMix[sodiumIndex]++;
+        UpdateElementCountText();
+    }
+
+    public void AddChlorine()
+    {
+        CurrentMix[chlorineIndex]++;
+        UpdateElementCountText();
+    }
+
+    private void UpdateElementCountText()
+    {
+        ElementCountText.text = $"Oxygen = {CurrentMix[oxygenIndex]}, Hydrogen = {CurrentMix[hydrogenIndex]}, Carbon = {CurrentMix[carbonIndex]}, Sodium = {CurrentMix[sodiumIndex]}, Chlorine = {CurrentMix[chlorineIndex]}";
+    }
+
+    private void PotionController()
     {
         if (Input.GetKeyDown(KeyCode.Joystick1Button1))
         {
@@ -29,47 +74,72 @@ public class PotionMixer : MonoBehaviour
         {
             AddCarbon();
         }
-        // Check if all values in the CurrentMix array are 0
-        if (CurrentMix[0] == 0 && CurrentMix[1] == 0 && CurrentMix[2] == 0)
+        if (Input.GetKeyDown(KeyCode.Joystick1Button4))
         {
-            Output.text = "No elements in the pot";
+            AddSodium();
         }
-        // Check if only one element is present
-        else if (CurrentMix[0] == 0 && CurrentMix[1] == 1 && CurrentMix[2] == 0)
+        if (Input.GetKeyDown(KeyCode.Joystick1Button5))
         {
-            Output.text = "Hydrogen only in the pot\n1 Hydrogen";
+            AddChlorine();
         }
-        // Check if there is water (1 Oxygen and 2 Hydrogen)
-        else if (CurrentMix[0] == 1 && CurrentMix[1] == 2 && CurrentMix[2] == 0)
+        if (Input.GetKeyDown(KeyCode.Joystick1Button8))
+        {
+            CheckPotion();
+        }
+        if (Input.GetKeyDown(KeyCode.Joystick1Button9))
+        {
+            ResetElements();
+        }
+    }
+
+    private void CheckPotion()
+    {
+        int oxygenCount = CurrentMix[oxygenIndex];
+        int hydrogenCount = CurrentMix[hydrogenIndex];
+        int carbonCount = CurrentMix[carbonIndex];
+        int sodiumCount = CurrentMix[sodiumIndex];
+        int chlorineCount = CurrentMix[chlorineIndex];
+
+        if (oxygenCount >= 1 && hydrogenCount >= 2 && carbonCount == 0 && sodiumCount == 0 && chlorineCount == 0) // Water
         {
             Output.text = "Water in the pot";
         }
+        else if (sodiumCount >= 1 && chlorineCount >= 1 && oxygenCount == 0 && hydrogenCount == 0 && carbonCount == 0) // Salt
+        {
+            Output.text = "Salt in the pot";
+        }
+        else if (carbonCount >= 6 && hydrogenCount >= 12 && oxygenCount >= 6 && sodiumCount == 0 && chlorineCount == 0) // Glucose
+        {
+            Output.text = "Glucose in the pot";
+        }
+        else if (carbonCount >= 1 && hydrogenCount >= 1 && chlorineCount >= 3 && oxygenCount == 0 && sodiumCount == 0) // Chloroform
+        {
+            Output.text = "Chloroform in the pot";
+        }
+        else if (carbonCount >= 7 && hydrogenCount >= 14 && oxygenCount == 0 && sodiumCount == 0 && chlorineCount == 0) // Jet Fuel
+        {
+            Output.text = "Jet Fuel in the pot";
+        }
+
+        else if (carbonCount >= 0 && hydrogenCount == 0 && oxygenCount == 1 && sodiumCount == 1 && chlorineCount == 1) // Jet Fuel
+        {
+            Output.text = "Liquid Bleach in the pot";
+        }
+        else
+        {
+            Output.text = "Unknown mixture in the pot";
+        }
     }
 
-    // Function to add 1 to Oxygen
-    public void AddOxygen()
+    private void ResetElements()
     {
-        CurrentMix[0]++;
+        for (int i = 0; i < CurrentMix.Length; i++)
+        {
+            CurrentMix[i] = 0;
+        }
         UpdateElementCountText();
-    }
-
-    // Function to add 1 to Hydrogen
-    public void AddHydrogen()
-    {
-        CurrentMix[1]++;
-        UpdateElementCountText();
-    }
-
-    // Function to add 1 to Carbon
-    public void AddCarbon()
-    {
-        CurrentMix[2]++;
-        UpdateElementCountText();
-    }
-
-    // Function to update the TextMeshProUGUI with element counts
-    private void UpdateElementCountText()
-    {
-        ElementCountText.text = $"Oxygen = {CurrentMix[0]}, Hydrogen = {CurrentMix[1]}, Carbon = {CurrentMix[2]}";
+        Output.text = "All elements reset";
     }
 }
+
+
