@@ -98,7 +98,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b9313fece3b1d4419e2df0191494170, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  patienceTimer: 20
+  patienceTimer: 40
+  potionScoreValue: 35
   patienceMeter: {fileID: 8944320248759997573}
   customerNumber: 0
 --- !u!1 &1707489371158187984

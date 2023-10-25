@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
+using TMPro;
 
 public class CustomerManager : MonoBehaviour
 {
@@ -13,19 +15,27 @@ public class CustomerManager : MonoBehaviour
     [SerializeField] private Transform customerParent;  //Spawns all customers under this parent object
     private float timer;    //Temp timer for spawning customers
     public int totalCustomers = 0;  //Total number of customers active
+    public int score = 0;
     private Vector3 customerSpawnPos = Vector3.zero;
     public List<CustomerController> customerControllers;
+    [SerializeField] private TextMeshProUGUI scoreText;
     
     private void Update()
     {
         //Changes customer spawn location based on the current number of active customers
         if (totalCustomers > 0)
         {
-            customerSpawnPos = new Vector3(2 * totalCustomers, 2, 0);
+            customerSpawnPos = new Vector3(-6 + (2 * totalCustomers), 0, 0);
         }
         else
         {
-            customerSpawnPos = Vector3.zero;
+            customerSpawnPos = new Vector3(-4, 0, 0);
+        }
+
+        if (Input.GetKeyDown(KeyCode.Joystick1Button0))
+        {
+            Debug.Log("Serving customer");
+            customerControllers[0].ServeCustomer();
         }
 
 
@@ -40,5 +50,7 @@ public class CustomerManager : MonoBehaviour
             totalCustomers++;
             timer = customerSpawnRate;
         }
+
+        scoreText.text = "Score: " + score;
     }
 }
