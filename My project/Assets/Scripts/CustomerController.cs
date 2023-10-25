@@ -26,6 +26,10 @@ public class CustomerController : MonoBehaviour
 
     private void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Joystick1Button0))
+        {
+            Debug.Log("Button pressed");
+        }
         //Updates customer position based on their customer number
         if (customerNumber == 1)
         {

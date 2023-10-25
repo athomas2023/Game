@@ -17,6 +17,18 @@ public class PotionMixer : MonoBehaviour
 
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Joystick1Button1))
+        {
+            AddOxygen();
+        }
+        if (Input.GetKeyDown(KeyCode.Joystick1Button2))
+        {
+            AddHydrogen();
+        }
+        if (Input.GetKeyDown(KeyCode.Joystick1Button3))
+        {
+            AddCarbon();
+        }
         // Check if all values in the CurrentMix array are 0
         if (CurrentMix[0] == 0 && CurrentMix[1] == 0 && CurrentMix[2] == 0)
         {
