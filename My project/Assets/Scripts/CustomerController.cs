@@ -69,6 +69,8 @@ public class CustomerController : MonoBehaviour
         yield return null;
     }
 
+
+    //These two methods could probably be combined into one because they have so much overlap
     private void CustomerPatienceExpires()
     {
         //When customer patience expires, removes them from the list of customers, reduces total customer count, lowers all customer numbers by 1
@@ -85,10 +87,13 @@ public class CustomerController : MonoBehaviour
 
     public void ServeCustomer()
     {
+        //Reduces total customer count and removes customer from list
+        //Gives points based on customer potionScoreValue and patience timer remaining
+        //Increasing the score over time would be cool
         customerManager.totalCustomers--;
         customerManager.customerControllers.Remove(this);
         customerManager.score += Mathf.FloorToInt(patienceTimerRemaining) + potionScoreValue;
-        Debug.Log("You had " + Mathf.FloorToInt(patienceTimerRemaining) + " seconds remaining");
+        //Debug.Log("You had " + Mathf.FloorToInt(patienceTimerRemaining) + " seconds remaining");
         foreach (CustomerController c in customerManager.customerControllers)
         {
             c.customerNumber--;
@@ -97,4 +102,7 @@ public class CustomerController : MonoBehaviour
         Destroy(gameObject);
     }
 
+    //Create a method that will serve the selected potion to the customer that wants it with the lowest patience timer
+    //Will need to have a way to accept input of the selected potion
+    //Every customer will need to keep track of what potion they want
 }
