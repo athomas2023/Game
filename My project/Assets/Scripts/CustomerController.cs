@@ -46,7 +46,7 @@ public class CustomerController : MonoBehaviour
         {
             t -= Time.deltaTime;
             patienceMeter.fillAmount -= 1.0f / patienceTimer * Time.deltaTime;
-            if (t > 20)
+            if (t > 12)
             {
                 patienceMeter.color = Color.green;
             }
@@ -63,7 +63,7 @@ public class CustomerController : MonoBehaviour
         CustomerPatienceExpires();
         yield return null;
     }
-    
+
     private void CustomerPatienceExpires()
     {
         //When customer patience expires, removes them from the list of customers, reduces total customer count, lowers all customer numbers by 1
