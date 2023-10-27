@@ -19,6 +19,8 @@ public class CustomerManager : MonoBehaviour
     private Vector3 customerSpawnPos = Vector3.zero;
     public List<CustomerController> customerControllers;
     [SerializeField] private TextMeshProUGUI scoreText;
+    [SerializeField] private TextMeshProUGUI highScoreText;
+    public HighScoreSO highScoreSO;
     
     private void Update()
     {
@@ -34,7 +36,7 @@ public class CustomerManager : MonoBehaviour
 
         //Debug button to simulate serving the first customer
         //Currently has no requirements
-        if (Input.GetKeyDown(KeyCode.Joystick1Button0))
+        if (Input.GetKeyDown(KeyCode.Joystick1Button0) || Input.GetKeyDown(KeyCode.Q))
         {
             Debug.Log("Serving customer");
             customerControllers[0].ServeCustomer();
@@ -54,5 +56,10 @@ public class CustomerManager : MonoBehaviour
         }
 
         scoreText.text = "Score: " + score;
+        if (score > highScoreSO.highScore)
+        {
+            highScoreSO.highScore = score;
+            highScoreText.text = "High Score: " + highScoreSO.highScore;
+        }
     }
 }
