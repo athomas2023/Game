@@ -59,7 +59,7 @@ public class MenuManager : MonoBehaviour
             pressableButtons[i].GetComponent<Image>().color = Color.white;
             if (i == highlightedButton)
             {
-                pressableButtons[i].GetComponent<Image>().color = Color.blue;
+                pressableButtons[i].GetComponent<Image>().color = Color.cyan;
             }
         }
 

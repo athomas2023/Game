@@ -25,12 +25,16 @@ public class PotionController : MonoBehaviour
     [SerializeField] Image potionDisplay;
     [SerializeField] Image cookMeter;
     [SerializeField] Image burnMeter;
+    [SerializeField] Image trashProgress;
 
     [SerializeField] SelectionManager selectionManager;
 
     public int potionType;
     bool potionCooked = false;
     bool potionCooking = false;
+    [SerializeField] private float trashTimer = 3f;
+    private float trashDelay = 0.25f;
+    private float time = 0f;
 
     [SerializeField] private CustomerManager customerManager;
 
@@ -105,33 +109,60 @@ public class PotionController : MonoBehaviour
 
     private void AddIngredients()
     {
-        if (Input.GetKeyDown(KeyCode.Joystick1Button1) || Input.GetKeyDown(KeyCode.Q))
+        if (potionCooking == false && potionCooked == false)
         {
-            AddHydrogen();
+            if (Input.GetKeyDown(KeyCode.Joystick1Button1) || Input.GetKeyDown(KeyCode.Q))
+            {
+                AddHydrogen();
+            }
+            if (Input.GetKeyDown(KeyCode.Joystick1Button2) || Input.GetKeyDown(KeyCode.W))
+            {
+                AddOxygen();
+            }
+            if (Input.GetKeyDown(KeyCode.Joystick1Button3) || Input.GetKeyDown(KeyCode.E))
+            {
+                AddSodium();
+            }
+            if (Input.GetKeyDown(KeyCode.Joystick1Button4) || Input.GetKeyDown(KeyCode.R))
+            {
+                AddChlorine();
+            }
+            if (Input.GetKeyDown(KeyCode.Joystick1Button5) || Input.GetKeyDown(KeyCode.T))
+            {
+                AddCarbon();
+            }
         }
-        if (Input.GetKeyDown(KeyCode.Joystick1Button2) || Input.GetKeyDown(KeyCode.W))
-        {
-            AddOxygen();
-        }
-        if (Input.GetKeyDown(KeyCode.Joystick1Button3) || Input.GetKeyDown(KeyCode.E))
-        {
-            AddSodium();
-        }
-        if (Input.GetKeyDown(KeyCode.Joystick1Button4) || Input.GetKeyDown(KeyCode.R))
-        {
-            AddChlorine();
-        }
-        if (Input.GetKeyDown(KeyCode.Joystick1Button5) || Input.GetKeyDown(KeyCode.T))
-        {
-            AddCarbon();
-        }
+
         if (Input.GetKeyDown(KeyCode.Joystick1Button0) || Input.GetKeyDown(KeyCode.Space))
         {
-            InteractWithPotion();
+            trashDelay = 0.25f;
+            if (potionCooked == true || potionCooking == false)
+            {
+                InteractWithPotion();  
+            }   
         }
-        if (Input.GetKeyDown(KeyCode.Joystick1Button9) || Input.GetKeyDown(KeyCode.Backspace))
+        if (Input.GetKey(KeyCode.Joystick1Button0) || Input.GetKey(KeyCode.Space))
         {
-            ResetElements();
+            trashDelay -= Time.deltaTime;
+            if ((potionCooked == true || potionCooking == true) && trashDelay < 0)
+            {
+                time += Time.deltaTime;
+                trashProgress.fillAmount = time / Mathf.Max(trashTimer, float.Epsilon);
+                Debug.Log("Trashing potion...");    
+                if(time > trashTimer)
+                {
+                    Debug.Log("Elements reset");
+                    trashProgress.fillAmount = 0f;
+                    ResetElements();
+                }
+            }
+                
+        }
+
+        if (Input.GetKeyUp(KeyCode.Joystick1Button0) || Input.GetKeyUp(KeyCode.Space))
+        {   
+            trashProgress.fillAmount = 0f;
+            time = 0f;
         }
     }
 
