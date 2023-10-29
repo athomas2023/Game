@@ -107,23 +107,23 @@ public class PotionController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Joystick1Button1) || Input.GetKeyDown(KeyCode.Q))
         {
-            AddOxygen();
+            AddHydrogen();
         }
         if (Input.GetKeyDown(KeyCode.Joystick1Button2) || Input.GetKeyDown(KeyCode.W))
         {
-            AddHydrogen();
+            AddOxygen();
         }
         if (Input.GetKeyDown(KeyCode.Joystick1Button3) || Input.GetKeyDown(KeyCode.E))
         {
-            AddCarbon();
+            AddSodium();
         }
         if (Input.GetKeyDown(KeyCode.Joystick1Button4) || Input.GetKeyDown(KeyCode.R))
         {
-            AddSodium();
+            AddChlorine();
         }
         if (Input.GetKeyDown(KeyCode.Joystick1Button5) || Input.GetKeyDown(KeyCode.T))
         {
-            AddChlorine();
+            AddCarbon();
         }
         if (Input.GetKeyDown(KeyCode.Joystick1Button0) || Input.GetKeyDown(KeyCode.Y))
         {
