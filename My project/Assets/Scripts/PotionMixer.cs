@@ -1,9 +1,6 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-using Unity.VisualScripting.ReorderableList.Element_Adder_Menu;
-using JetBrains.Annotations;
 
 public class PotionMixer : MonoBehaviour
 {

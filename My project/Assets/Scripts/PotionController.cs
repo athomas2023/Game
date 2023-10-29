@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
@@ -23,9 +22,9 @@ public class PotionController : MonoBehaviour
     [SerializeField] TextMeshProUGUI chlorineText;
     [SerializeField] TextMeshProUGUI carbonText;
 
-    [SerializeField] UnityEngine.UI.Image potionDisplay;
-    [SerializeField] UnityEngine.UI.Image cookMeter;
-    [SerializeField] UnityEngine.UI.Image burnMeter;
+    [SerializeField] Image potionDisplay;
+    [SerializeField] Image cookMeter;
+    [SerializeField] Image burnMeter;
 
     [SerializeField] SelectionManager selectionManager;
 
@@ -227,7 +226,7 @@ public class PotionController : MonoBehaviour
         Output.text = "Empty";
     }
 
-    private IEnumerator PotionCooking(float duration, UnityEngine.UI.Image fillDisplay)
+    private IEnumerator PotionCooking(float duration, Image fillDisplay)
     {
         float time = 0.0f;
         while (time < duration)

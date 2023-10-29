@@ -1,12 +1,5 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
-using System.Threading;
-using Microsoft.Unity.VisualStudio.Editor;
-using TMPro;
-using UnityEditor.ShaderGraph;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class CustomerController : MonoBehaviour
 {
