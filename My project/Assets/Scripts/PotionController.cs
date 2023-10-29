@@ -126,7 +126,7 @@ public class PotionController : MonoBehaviour
         {
             AddChlorine();
         }
-        if (Input.GetKeyDown(KeyCode.Joystick1Button8) || Input.GetKeyDown(KeyCode.Y))
+        if (Input.GetKeyDown(KeyCode.Joystick1Button0) || Input.GetKeyDown(KeyCode.Y))
         {
             InteractWithPotion();
         }
@@ -176,7 +176,7 @@ public class PotionController : MonoBehaviour
         }
         else
         {
-            Output.text = "Unknown mixture in the pot";
+            Output.text = "Unknown";
             potionType = 0;
         }
     }
@@ -227,13 +227,14 @@ public class PotionController : MonoBehaviour
         Output.text = "Empty";
     }
 
-    private IEnumerator PotionCooking(float timer, UnityEngine.UI.Image fillDisplay)
+    private IEnumerator PotionCooking(float duration, UnityEngine.UI.Image fillDisplay)
     {
-        float timeRemaining = timer;
-        while (timeRemaining > 0)
+        float time = 0.0f;
+        while (time < duration)
         {
-            timeRemaining -= Time.deltaTime;
-            fillDisplay.fillAmount += 1.0f / timeRemaining * Time.deltaTime;
+            fillDisplay.fillAmount = time / Mathf.Max(duration, float.Epsilon);
+            time += Time.deltaTime;
+
             yield return null;
         }
 
