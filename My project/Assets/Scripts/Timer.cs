@@ -10,6 +10,7 @@ public class Timer : MonoBehaviour
     public Slider timerSlider;
     public TextMeshProUGUI timerText;
     public float gameTime;
+    public float timer = 0.00f;
 
     private bool stopTimer;
 
@@ -23,7 +24,8 @@ public class Timer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float time = gameTime - Time.time;
+        timer += Time.deltaTime;
+        float time = gameTime - timer;
 
         int minutes = Mathf.FloorToInt(time/60);
         int seconds = Mathf.FloorToInt(time - minutes * 60f);
