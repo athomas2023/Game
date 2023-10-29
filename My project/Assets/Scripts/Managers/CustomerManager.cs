@@ -34,15 +34,6 @@ public class CustomerManager : MonoBehaviour
             customerSpawnPos = new Vector3(-4, 0, 0);
         }
 
-        //Debug button to simulate serving the first customer
-        //Currently has no requirements
-        if (Input.GetKeyDown(KeyCode.Joystick1Button0) || Input.GetKeyDown(KeyCode.Q))
-        {
-            Debug.Log("Serving customer");
-            customerControllers[0].ServeCustomer();
-        }
-
-
         //Spawns a new customer every set period of time
         //Adds each customer to the customers list
         timer -= Time.deltaTime;

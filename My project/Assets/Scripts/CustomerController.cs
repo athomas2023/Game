@@ -20,6 +20,7 @@ public class CustomerController : MonoBehaviour
     private CustomerManager customerManager;
     protected bool orderCompleted;  //Keeps track of if an order was completed
     public int customerNumber;  //Keeps track of the order of customers, customer 1 is the active customer
+    public int potionOrder;
     
 
     private void Start()
@@ -96,7 +97,7 @@ public class CustomerController : MonoBehaviour
         //Debug.Log("You had " + Mathf.FloorToInt(patienceTimerRemaining) + " seconds remaining");
         foreach (CustomerController c in customerManager.customerControllers)
         {
-            c.customerNumber--;
+            c.customerNumber = Mathf.Clamp(customerManager.customerControllers.IndexOf(c) + 1, 1, 5);
         }
 
         Destroy(gameObject);

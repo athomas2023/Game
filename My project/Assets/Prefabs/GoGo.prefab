@@ -282,6 +282,7 @@ MonoBehaviour:
   potionScoreValue: 50
   patienceMeter: {fileID: 3971568104733483802}
   customerNumber: 0
+  potionOrder: 1
 --- !u!1 &5973974703454873520
 GameObject:
   m_ObjectHideFlags: 0
