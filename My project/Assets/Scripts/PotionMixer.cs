@@ -26,7 +26,6 @@ public class PotionMixer : MonoBehaviour
 
     public int potionType;
     bool potionCooked = false;
-    bool potionBurned = false;
 
     [SerializeField] private CustomerManager customerManager;
 
@@ -217,7 +216,6 @@ public class PotionMixer : MonoBehaviour
         }
         else
         {
-            potionBurned = true;
             Debug.Log("Your potion exploded!");
         }     
         yield return null;

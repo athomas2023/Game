@@ -8,6 +8,8 @@ public class PotionController : MonoBehaviour
 {
     public bool potionSelected;
 
+    [SerializeField] private float cookTime = 5f;
+    [SerializeField] private float burnTime = 10f;
     private int[] CurrentMix = new int[5]; // Initialize an array of size 5 (Oxygen, Hydrogen, Carbon, Sodium, Chlorine)
     private int oxygenIndex = 0; // Index for Oxygen
     private int hydrogenIndex = 1; // Index for Hydrogen
@@ -25,18 +27,26 @@ public class PotionController : MonoBehaviour
     [SerializeField] UnityEngine.UI.Image cookMeter;
     [SerializeField] UnityEngine.UI.Image burnMeter;
 
+    [SerializeField] SelectionManager selectionManager;
+
     public int potionType;
     bool potionCooked = false;
-    bool potionBurned = false;
+    bool potionCooking = false;
 
     [SerializeField] private CustomerManager customerManager;
 
     void Start()
     {
         UpdateElementCountText();
+        Output.text = "Empty";
     }
     private void Update()
     {
+        if (burnMeter.fillAmount == 1)
+        {
+            ExplodePotion();
+        }
+
         if (potionSelected)
         {
             GetComponent<Outline>().enabled = true;
@@ -87,11 +97,11 @@ public class PotionController : MonoBehaviour
 
     private void UpdateElementCountText()
     {
-        oxygenText.text = $"Q Oxygen = {CurrentMix[oxygenIndex]}";
-        hydrogenText.text = $"W Hydrogen = {CurrentMix[hydrogenIndex]}";
-        carbonText.text = $"E Carbon = {CurrentMix[carbonIndex]}";
-        sodiumText.text = $"R Sodium = {CurrentMix[sodiumIndex]}";
-        chlorineText.text = $"T Chlorine = {CurrentMix[chlorineIndex]}";
+        oxygenText.text = $"O = {CurrentMix[oxygenIndex]}";
+        hydrogenText.text = $"H = {CurrentMix[hydrogenIndex]}";
+        carbonText.text = $"C = {CurrentMix[carbonIndex]}";
+        sodiumText.text = $"Na = {CurrentMix[sodiumIndex]}";
+        chlorineText.text = $"Cl = {CurrentMix[chlorineIndex]}";
     }
 
     private void AddIngredients()
@@ -118,7 +128,7 @@ public class PotionController : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.Joystick1Button8) || Input.GetKeyDown(KeyCode.Y))
         {
-            CheckPotion();
+            InteractWithPotion();
         }
         if (Input.GetKeyDown(KeyCode.Joystick1Button9) || Input.GetKeyDown(KeyCode.U))
         {
@@ -128,65 +138,78 @@ public class PotionController : MonoBehaviour
 
     private void CheckPotion()
     {
-        if (potionCooked == false)
+        int oxygenCount = CurrentMix[oxygenIndex];
+        int hydrogenCount = CurrentMix[hydrogenIndex];
+        int carbonCount = CurrentMix[carbonIndex];
+        int sodiumCount = CurrentMix[sodiumIndex];
+        int chlorineCount = CurrentMix[chlorineIndex];
+
+        if (oxygenCount >= 1 && hydrogenCount >= 2 && carbonCount == 0 && sodiumCount == 0 && chlorineCount == 0) // Water
         {
-            StartCoroutine(PotionCooking(5f, cookMeter));
+            Output.text = "Water";
+            potionType = 1;
+        }
+        else if (sodiumCount >= 1 && chlorineCount >= 1 && oxygenCount == 0 && hydrogenCount == 0 && carbonCount == 0) // Salt
+        {
+            Output.text = "Salt";
+            potionType = 2;
+        }
+        else if (carbonCount >= 6 && hydrogenCount >= 12 && oxygenCount >= 6 && sodiumCount == 0 && chlorineCount == 0) // Glucose
+        {
+            Output.text = "Glucose";
+            potionType = 3;
+        }   
+        else if (carbonCount >= 1 && hydrogenCount >= 1 && chlorineCount >= 3 && oxygenCount == 0 && sodiumCount == 0) // Chloroform
+        {
+            Output.text = "Chloroform";
+            potionType = 4;
+        }
+        else if (carbonCount >= 7 && hydrogenCount >= 14 && oxygenCount == 0 && sodiumCount == 0 && chlorineCount == 0) // Jet Fuel
+        {
+            Output.text = "Jet Fuel";
+            potionType = 5;
+        }
+        else if (carbonCount >= 0 && hydrogenCount == 0 && oxygenCount == 1 && sodiumCount == 1 && chlorineCount == 1) // Jet Fuel
+        {
+            Output.text = "Liquid Bleach";
+            potionType = 6;
         }
         else
         {
-            int oxygenCount = CurrentMix[oxygenIndex];
-            int hydrogenCount = CurrentMix[hydrogenIndex];
-            int carbonCount = CurrentMix[carbonIndex];
-            int sodiumCount = CurrentMix[sodiumIndex];
-            int chlorineCount = CurrentMix[chlorineIndex];
+            Output.text = "Unknown mixture in the pot";
+            potionType = 0;
+        }
+    }
 
-            if (oxygenCount >= 1 && hydrogenCount >= 2 && carbonCount == 0 && sodiumCount == 0 && chlorineCount == 0) // Water
-            {
-                Output.text = "Water in the pot";
-                potionType = 1;
-            }
-            else if (sodiumCount >= 1 && chlorineCount >= 1 && oxygenCount == 0 && hydrogenCount == 0 && carbonCount == 0) // Salt
-            {
-                Output.text = "Salt in the pot";
-                potionType = 2;
-            }
-            else if (carbonCount >= 6 && hydrogenCount >= 12 && oxygenCount >= 6 && sodiumCount == 0 && chlorineCount == 0) // Glucose
-            {
-                Output.text = "Glucose in the pot";
-                potionType = 3;
-            }   
-            else if (carbonCount >= 1 && hydrogenCount >= 1 && chlorineCount >= 3 && oxygenCount == 0 && sodiumCount == 0) // Chloroform
-            {
-                Output.text = "Chloroform in the pot";
-                potionType = 4;
-            }
-            else if (carbonCount >= 7 && hydrogenCount >= 14 && oxygenCount == 0 && sodiumCount == 0 && chlorineCount == 0) // Jet Fuel
-            {
-                Output.text = "Jet Fuel in the pot";
-                potionType = 5;
-            }
-            else if (carbonCount >= 0 && hydrogenCount == 0 && oxygenCount == 1 && sodiumCount == 1 && chlorineCount == 1) // Jet Fuel
-            {
-                Output.text = "Liquid Bleach in the pot";
-                potionType = 6;
-            }
-            else
-            {
-                Output.text = "Unknown mixture in the pot";
-                potionType = 0;
-            }
-
+    private void InteractWithPotion()
+    {
+        if (potionCooked == false && potionCooking == false)
+        {
+            potionCooking = true;
+            StartCoroutine(PotionCooking(cookTime, cookMeter));
+        }
+        else
+        {
             for (int i = 0; i < customerManager.customerControllers.Count; i++)
             {
                 if (potionType == customerManager.customerControllers[i].potionOrder)
                 {
                     customerManager.customerControllers[i].ServeCustomer();
+                    potionCooked = false;
                     potionType = 0;
+                    StopAllCoroutines();
+                    potionDisplay.fillAmount = 0;
+                    burnMeter.fillAmount = 0;
                     ResetElements();
                 }
             }
         }
-        
+    }
+
+    private void ExplodePotion()
+    {
+        selectionManager.remainingPotions.Remove(this.gameObject);
+        Destroy(gameObject);
     }
 
     private void ResetElements()
@@ -195,9 +218,13 @@ public class PotionController : MonoBehaviour
         {
             CurrentMix[i] = 0;
         }
-        UpdateElementCountText();
+        potionCooked = false;
+        potionType = 0;
+        StopAllCoroutines();
         potionDisplay.fillAmount = 0;
-        Output.text = "All elements reset";
+        burnMeter.fillAmount = 0;
+        cookMeter.fillAmount = 0;
+        Output.text = "Empty";
     }
 
     private IEnumerator PotionCooking(float timer, UnityEngine.UI.Image fillDisplay)
@@ -213,13 +240,15 @@ public class PotionController : MonoBehaviour
         if (potionCooked == false)
         {
             potionCooked = true;
-            StartCoroutine(PotionCooking(10f, burnMeter));
+            potionCooking = false;
+            CheckPotion();
+            StartCoroutine(PotionCooking(burnTime, burnMeter));
             yield return null;
         }
         else
         {
-            potionBurned = true;
             Debug.Log("Your potion exploded!");
+            Destroy(gameObject);    
         }     
         yield return null;
     }

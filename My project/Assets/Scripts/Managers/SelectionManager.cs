@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class SelectionManager : MonoBehaviour
@@ -7,12 +8,13 @@ public class SelectionManager : MonoBehaviour
     [SerializeField] private PotionController potion1;
     [SerializeField] private PotionController potion2;
     [SerializeField] private PotionController potion3;
-    private int selectedPotion = 1;
-
+    public List<GameObject> remainingPotions;
+    public int selectedPotion = 1;
     private void Update()
     {
         SelectNewPotion();
         HighlightSelectedPotion();
+        remainingPotions.RemoveAll(s => s == null);
     }
 
     private void SelectNewPotion()
@@ -20,7 +22,7 @@ public class SelectionManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.RightArrow))
         {
             selectedPotion += 1;
-            if (selectedPotion > 3)
+            if (selectedPotion > remainingPotions.Count)
             {
                 selectedPotion = 1;
             }
@@ -31,30 +33,20 @@ public class SelectionManager : MonoBehaviour
             selectedPotion -= 1;
             if (selectedPotion < 1)
             {
-                selectedPotion = 3;
+                selectedPotion = remainingPotions.Count;
             }
         }
     }
 
     private void HighlightSelectedPotion()
     {
-        if (selectedPotion == 1)
-        {
-            potion1.potionSelected = true;
-            potion2.potionSelected = false;
-            potion3.potionSelected = false;
-        }
-        else if (selectedPotion == 2)
-        {
-            potion1.potionSelected = false;
-            potion2.potionSelected = true;
-            potion3.potionSelected = false;
-        }
-        else if (selectedPotion == 3)
-        {
-            potion1.potionSelected = false;
-            potion2.potionSelected = false;
-            potion3.potionSelected = true;
-        }
+        for (int i = 0; i < remainingPotions.Count; i++)
+            {
+                remainingPotions[i].GetComponent<PotionController>().potionSelected = false;
+                if (i == selectedPotion-1)
+                {
+                    remainingPotions[i].GetComponent<PotionController>().potionSelected = true;
+                }
+            }
     }
 }
