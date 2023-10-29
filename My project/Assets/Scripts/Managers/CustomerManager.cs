@@ -46,7 +46,7 @@ public class CustomerManager : MonoBehaviour
         timer -= Time.deltaTime;
         if (timer < 0 && totalCustomers < maxCustomers)
         {
-            int r = UnityEngine.Random.Range(1, 3);
+            int r = UnityEngine.Random.Range(1, customers.Count+1);
             GameObject cc = Instantiate(customers[r - 1], customerSpawnPos, Quaternion.identity, customerParent);
             customerControllers.Add(cc.GetComponent<CustomerController>());
             totalCustomers++;

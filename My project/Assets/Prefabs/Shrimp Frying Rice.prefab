@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6822047632201301983}
   - component: {fileID: 6879148205264814714}
   m_Layer: 0
-  m_Name: Mathemagicians
+  m_Name: Shrimp Frying Rice
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 0.6650944, b: 0.86927825, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -98,11 +98,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b9313fece3b1d4419e2df0191494170, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  patienceTimer: 45
+  patienceTimer: 30
   potionScoreValue: 35
   patienceMeter: {fileID: 8944320248759997573}
   customerNumber: 0
-  potionOrder: 2
+  potionOrder: 4
 --- !u!1 &1707489371158187984
 GameObject:
   m_ObjectHideFlags: 0
@@ -355,7 +355,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: NaCl
+  m_text: CHCl3
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -382,8 +382,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 3
-  m_fontSizeBase: 3
+  m_fontSize: 2
+  m_fontSizeBase: 2
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18

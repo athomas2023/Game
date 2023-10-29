@@ -7,7 +7,7 @@ public class PauseManager : MonoBehaviour
     private bool paused = false;
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.P) || Input.GetKeyDown(KeyCode.JoystickButton7))
+        if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.JoystickButton7))
         {
             Pause();
         }

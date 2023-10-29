@@ -18,33 +18,36 @@ public class SelectionManager : MonoBehaviour
 
     private void SelectNewPotion()
     {
-        if ((Input.GetKeyDown(KeyCode.RightArrow) || Input.GetAxisRaw("Horizontal") == 1) && axisInUse == false)
+        if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetAxisRaw("Horizontal") == 1)
         {
-
-            selectedPotion += 1;
-            if (selectedPotion > remainingPotions.Count)
+            if (axisInUse == false)
             {
-                selectedPotion = 1;
+                selectedPotion += 1;
+                if (selectedPotion > remainingPotions.Count)
+                {
+                    selectedPotion = 1;
+                }
+                axisInUse = true;
             }
-            axisInUse = true;
-            Invoke("SelectionCooldown", 0.5f);
         }
 
-        if ((Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetAxisRaw("Horizontal") == -1) && axisInUse == false)
+        if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetAxisRaw("Horizontal") == -1)
         {
-            selectedPotion -= 1;
-            if (selectedPotion < 1)
+            if (axisInUse == false)
             {
-                selectedPotion = remainingPotions.Count;
+                selectedPotion -= 1;
+                if (selectedPotion < 1)
+                {
+                    selectedPotion = remainingPotions.Count;
+                }
+                axisInUse = true;
             }
-            axisInUse = true;
-            Invoke("SelectionCooldown", 0.25f);
         }
-    }
 
-    private void SelectionCooldown()
-    {
-        axisInUse = false;
+        if (Input.GetAxis("Horizontal") == 0)
+        {
+            axisInUse = false;
+        }
     }
 
     private void HighlightSelectedPotion()

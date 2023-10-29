@@ -73,7 +73,7 @@ public class CustomerController : MonoBehaviour
         customerManager.customerControllers.Remove(this);
         foreach (CustomerController c in customerManager.customerControllers)
         {
-            c.customerNumber--;
+            c.customerNumber = Mathf.Clamp(customerManager.customerControllers.IndexOf(c) + 1, 1, 5);
         }
         
         Destroy(gameObject);

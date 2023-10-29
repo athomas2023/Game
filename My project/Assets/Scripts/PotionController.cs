@@ -58,7 +58,7 @@ public class PotionController : MonoBehaviour
         }
     }
 
-        public void AddOxygen()
+    public void AddOxygen()
     {
         CurrentMix[oxygenIndex]++;
         potionDisplay.fillAmount += 0.1f;
@@ -77,7 +77,7 @@ public class PotionController : MonoBehaviour
         CurrentMix[carbonIndex]++;
         potionDisplay.fillAmount += 0.1f;
         UpdateElementCountText();
-        
+
     }
 
     public void AddSodium()
@@ -125,11 +125,11 @@ public class PotionController : MonoBehaviour
         {
             AddCarbon();
         }
-        if (Input.GetKeyDown(KeyCode.Joystick1Button0) || Input.GetKeyDown(KeyCode.Y))
+        if (Input.GetKeyDown(KeyCode.Joystick1Button0) || Input.GetKeyDown(KeyCode.Space))
         {
             InteractWithPotion();
         }
-        if (Input.GetKeyDown(KeyCode.Joystick1Button9) || Input.GetKeyDown(KeyCode.U))
+        if (Input.GetKeyDown(KeyCode.Joystick1Button9) || Input.GetKeyDown(KeyCode.Backspace))
         {
             ResetElements();
         }
@@ -157,7 +157,7 @@ public class PotionController : MonoBehaviour
         {
             Output.text = "Glucose";
             potionType = 3;
-        }   
+        }
         else if (carbonCount >= 1 && hydrogenCount >= 1 && chlorineCount >= 3 && oxygenCount == 0 && sodiumCount == 0) // Chloroform
         {
             Output.text = "Chloroform";
@@ -218,6 +218,7 @@ public class PotionController : MonoBehaviour
             CurrentMix[i] = 0;
         }
         potionCooked = false;
+        potionCooking = false;
         potionType = 0;
         StopAllCoroutines();
         potionDisplay.fillAmount = 0;
@@ -248,8 +249,8 @@ public class PotionController : MonoBehaviour
         else
         {
             Debug.Log("Your potion exploded!");
-            Destroy(gameObject);    
-        }     
+            Destroy(gameObject);
+        }
         yield return null;
     }
 }
