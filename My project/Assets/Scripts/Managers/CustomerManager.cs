@@ -1,8 +1,7 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.AI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class CustomerManager : MonoBehaviour
 {
@@ -21,9 +20,17 @@ public class CustomerManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI scoreText;
     [SerializeField] private TextMeshProUGUI highScoreText;
     public HighScoreSO highScoreSO;
-    
+    [SerializeField] private TextMeshProUGUI gameTimerUI;
+    [SerializeField] private float gameTimer;
+
     private void Update()
     {
+        gameTimer -= Time.deltaTime;
+        gameTimerUI.text = "Time: " + (int)gameTimer;
+        if (gameTimer < 0)
+        {
+            SceneManager.LoadScene("Main Menu");
+        }
         //Changes customer spawn location based on the current number of active customers
         if (totalCustomers > 0)
         {
