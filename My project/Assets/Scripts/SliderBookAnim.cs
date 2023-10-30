@@ -5,7 +5,13 @@ using UnityEngine;
 public class SliderBookAnim : MonoBehaviour
 {
     public GameObject PanelMenu;
-
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Z))
+        {
+            ShowHideMenu();
+        }
+    }
     public void ShowHideMenu()
     {
         if(PanelMenu !=null)
