@@ -11,9 +11,12 @@ public class SelectionManager : MonoBehaviour
     private bool axisInUse = false;
     private void Update()
     {
-        SelectNewPotion();
-        HighlightSelectedPotion();
-        remainingPotions.RemoveAll(s => s == null);
+        if (Time.timeScale == 1)
+        {
+            SelectNewPotion();
+            HighlightSelectedPotion();
+            remainingPotions.RemoveAll(s => s == null);
+        }  
     }
 
     private void SelectNewPotion()

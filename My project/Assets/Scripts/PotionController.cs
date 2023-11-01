@@ -45,21 +45,25 @@ public class PotionController : MonoBehaviour
     }
     private void Update()
     {
-        if (burnMeter.fillAmount == 1)
+        if (Time.timeScale == 1)
         {
-            ExplodePotion();
-        }
+            if (burnMeter.fillAmount == 1)
+            {
+                ExplodePotion();
+            }
 
-        if (potionSelected)
-        {
-            GetComponent<Outline>().enabled = true;
-            UpdateElementCountText();
-            AddIngredients();
+            if (potionSelected)
+            {
+                GetComponent<Outline>().enabled = true;
+                UpdateElementCountText();
+                AddIngredients();
+            }
+            else
+            {
+                GetComponent<Outline>().enabled = false;
+            }
         }
-        else
-        {
-            GetComponent<Outline>().enabled = false;
-        }
+        
     }
 
     public void AddOxygen()
@@ -174,32 +178,32 @@ public class PotionController : MonoBehaviour
         int sodiumCount = CurrentMix[sodiumIndex];
         int chlorineCount = CurrentMix[chlorineIndex];
 
-        if (oxygenCount >= 1 && hydrogenCount >= 2 && carbonCount == 0 && sodiumCount == 0 && chlorineCount == 0) // Water
+        if (oxygenCount == 1 && hydrogenCount == 2 && carbonCount == 0 && sodiumCount == 0 && chlorineCount == 0) // Water
         {
             Output.text = "Water";
             potionType = 1;
         }
-        else if (sodiumCount >= 1 && chlorineCount >= 1 && oxygenCount == 0 && hydrogenCount == 0 && carbonCount == 0) // Salt
+        else if (sodiumCount == 1 && chlorineCount == 1 && oxygenCount == 0 && hydrogenCount == 0 && carbonCount == 0) // Salt
         {
             Output.text = "Salt";
             potionType = 2;
         }
-        else if (carbonCount >= 6 && hydrogenCount >= 12 && oxygenCount >= 6 && sodiumCount == 0 && chlorineCount == 0) // Glucose
+        else if (carbonCount == 6 && hydrogenCount == 12 && oxygenCount == 6 && sodiumCount == 0 && chlorineCount == 0) // Glucose
         {
             Output.text = "Glucose";
             potionType = 3;
         }
-        else if (carbonCount >= 1 && hydrogenCount >= 1 && chlorineCount >= 3 && oxygenCount == 0 && sodiumCount == 0) // Chloroform
+        else if (carbonCount == 1 && hydrogenCount == 1 && chlorineCount == 3 && oxygenCount == 0 && sodiumCount == 0) // Chloroform
         {
             Output.text = "Chloroform";
             potionType = 4;
         }
-        else if (carbonCount >= 7 && hydrogenCount >= 14 && oxygenCount == 0 && sodiumCount == 0 && chlorineCount == 0) // Jet Fuel
+        else if (carbonCount == 7 && hydrogenCount == 14 && oxygenCount == 0 && sodiumCount == 0 && chlorineCount == 0) // Jet Fuel
         {
             Output.text = "Jet Fuel";
             potionType = 5;
         }
-        else if (carbonCount >= 0 && hydrogenCount == 0 && oxygenCount == 1 && sodiumCount == 1 && chlorineCount == 1) // Jet Fuel
+        else if (carbonCount == 0 && hydrogenCount == 0 && oxygenCount == 1 && sodiumCount == 1 && chlorineCount == 1) // Jet Fuel
         {
             Output.text = "Liquid Bleach";
             potionType = 6;
