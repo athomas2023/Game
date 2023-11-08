@@ -157,11 +157,9 @@ public class PotionController : MonoBehaviour
             if ((potionCooked == true || potionCooking == true) && trashDelay < 0)
             {
                 time += Time.deltaTime;
-                trashProgress.fillAmount = time / Mathf.Max(trashTimer, float.Epsilon);
-                Debug.Log("Trashing potion...");    
+                trashProgress.fillAmount = time / Mathf.Max(trashTimer, float.Epsilon);  
                 if(time > trashTimer)
                 {
-                    Debug.Log("Elements reset");
                     trashProgress.fillAmount = 0f;
                     ResetElements();
                 }
@@ -292,7 +290,6 @@ public class PotionController : MonoBehaviour
         }
         else
         {
-            Debug.Log("Your potion exploded!");
             Destroy(gameObject);
         }
         yield return null;
