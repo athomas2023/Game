@@ -21,7 +21,7 @@ public class SelectionManager : MonoBehaviour
 
     private void SelectNewPotion()
     {
-        if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetAxisRaw("Horizontal") == 1)
+        if (Input.GetKey(KeyCode.RightArrow) || Input.GetAxisRaw("Horizontal") == 1)
         {
             if (axisInUse == false)
             {
@@ -31,10 +31,11 @@ public class SelectionManager : MonoBehaviour
                     selectedPotion = 1;
                 }
                 axisInUse = true;
+                Invoke("SelectionReset", 0.4f);
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetAxisRaw("Horizontal") == -1)
+        if (Input.GetKey(KeyCode.LeftArrow) || Input.GetAxisRaw("Horizontal") == -1)
         {
             if (axisInUse == false)
             {
@@ -44,13 +45,14 @@ public class SelectionManager : MonoBehaviour
                     selectedPotion = remainingPotions.Count;
                 }
                 axisInUse = true;
+                Invoke("SelectionReset", 0.4f);
             }
         }
+    }
 
-        if (Input.GetAxis("Horizontal") == 0)
-        {
-            axisInUse = false;
-        }
+    private void SelectionReset()
+    {
+        axisInUse = false;
     }
 
     private void HighlightSelectedPotion()

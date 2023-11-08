@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -10,7 +11,7 @@ public class MenuManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.DownArrow) || Input.GetAxis("Vertical") == -1)
+        if (Input.GetKey(KeyCode.DownArrow) || Input.GetAxis("Vertical") == -1)
         {
             if (axisInUse == false)
             {
@@ -20,10 +21,11 @@ public class MenuManager : MonoBehaviour
                     highlightedButton = 0;
                 }
                 axisInUse = true;
+                StartCoroutine(SelectionReset());
             }   
         }
 
-        if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetAxis("Vertical") == 1)
+        if (Input.GetKey(KeyCode.UpArrow) || Input.GetAxis("Vertical") == 1)
         {
             if (axisInUse == false)
             {
@@ -33,13 +35,10 @@ public class MenuManager : MonoBehaviour
                     highlightedButton = pressableButtons.Count - 1;
                 }
                 axisInUse = true;
+                StartCoroutine(SelectionReset());
             }
         }
 
-        if (Input.GetAxis("Vertical") == 0)
-        {
-            axisInUse = false;
-        }
 
         if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Joystick1Button0))
         {
@@ -63,5 +62,12 @@ public class MenuManager : MonoBehaviour
             }
         }
 
+    }
+
+    private IEnumerator SelectionReset()
+    {
+        yield return new WaitForSecondsRealtime(0.5f);
+        axisInUse = false;
+        yield return null;
     }
 }
