@@ -62,7 +62,13 @@ public class PotionController : MonoBehaviour
             {
                 GetComponent<Outline>().enabled = false;
             }
+            if (!potionSelected)
+            {
+                trashProgress.fillAmount = 0f;
+                time = 0f;
+            }
         }
+
         
     }
 
@@ -219,8 +225,11 @@ public class PotionController : MonoBehaviour
     {
         if (potionCooked == false && potionCooking == false)
         {
-            potionCooking = true;
-            StartCoroutine(PotionCooking(cookTime, cookMeter));
+            if (CurrentMix[oxygenIndex] + CurrentMix[hydrogenIndex] + CurrentMix[carbonIndex] + CurrentMix[sodiumIndex] + CurrentMix[chlorineIndex] > 0)
+            {
+                potionCooking = true;
+                StartCoroutine(PotionCooking(cookTime, cookMeter));
+            }      
         }
         else
         {
