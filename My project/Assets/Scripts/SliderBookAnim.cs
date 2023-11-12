@@ -9,6 +9,7 @@ public class SliderBookAnim : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Z) || Input.GetKeyDown(KeyCode.JoystickButton6))
         {
+            AudioManager.Instance.PlaySFX("BookFlip");
             ShowHideMenu();
         }
     }

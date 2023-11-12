@@ -69,7 +69,7 @@ public class PotionController : MonoBehaviour
             }
         }
 
-        
+
     }
 
     public void AddOxygen()
@@ -148,8 +148,8 @@ public class PotionController : MonoBehaviour
             trashDelay = 0.25f;
             if (potionCooked == true || potionCooking == false)
             {
-                InteractWithPotion();  
-            }   
+                InteractWithPotion();
+            }
         }
         if (Input.GetKey(KeyCode.Joystick1Button0) || Input.GetKey(KeyCode.Space))
         {
@@ -157,18 +157,18 @@ public class PotionController : MonoBehaviour
             if ((potionCooked == true || potionCooking == true) && trashDelay < 0)
             {
                 time += Time.deltaTime;
-                trashProgress.fillAmount = time / Mathf.Max(trashTimer, float.Epsilon);  
-                if(time > trashTimer)
+                trashProgress.fillAmount = time / Mathf.Max(trashTimer, float.Epsilon);
+                if (time > trashTimer)
                 {
                     trashProgress.fillAmount = 0f;
                     ResetElements();
                 }
             }
-                
+
         }
 
         if (Input.GetKeyUp(KeyCode.Joystick1Button0) || Input.GetKeyUp(KeyCode.Space))
-        {   
+        {
             trashProgress.fillAmount = 0f;
             time = 0f;
         }
@@ -227,7 +227,7 @@ public class PotionController : MonoBehaviour
             {
                 potionCooking = true;
                 StartCoroutine(PotionCooking(cookTime, cookMeter));
-            }      
+            }
         }
         else
         {
@@ -249,8 +249,9 @@ public class PotionController : MonoBehaviour
 
     private void ExplodePotion()
     {
+        AudioManager.Instance.PlaySFX("PotionExploding");
         selectionManager.remainingPotions.Remove(this.gameObject);
-        Destroy(gameObject);
+        Destroy(gameObject, 0.1f);
     }
 
     private void ResetElements()
@@ -271,6 +272,7 @@ public class PotionController : MonoBehaviour
 
     private IEnumerator PotionCooking(float duration, Image fillDisplay)
     {
+        AudioManager.Instance.PlaySFX("PotionBrewing");
         float time = 0.0f;
         while (time < duration)
         {
@@ -290,7 +292,8 @@ public class PotionController : MonoBehaviour
         }
         else
         {
-            Destroy(gameObject);
+            AudioManager.Instance.PlaySFX("PotionExploding");
+            Destroy(gameObject, 0.2f);
         }
         yield return null;
     }

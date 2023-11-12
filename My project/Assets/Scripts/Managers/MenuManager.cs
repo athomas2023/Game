@@ -9,6 +9,10 @@ public class MenuManager : MonoBehaviour
     public int highlightedButton;
     bool axisInUse;
 
+    private void OnEnable()
+    {
+        axisInUse = false;
+    }
     private void Update()
     {
         if (Input.GetKey(KeyCode.DownArrow) || Input.GetAxis("Vertical") == -1)
@@ -22,7 +26,7 @@ public class MenuManager : MonoBehaviour
                 }
                 axisInUse = true;
                 StartCoroutine(SelectionReset());
-            }   
+            }
         }
 
         if (Input.GetKey(KeyCode.UpArrow) || Input.GetAxis("Vertical") == 1)
@@ -66,7 +70,7 @@ public class MenuManager : MonoBehaviour
 
     private IEnumerator SelectionReset()
     {
-        yield return new WaitForSecondsRealtime(0.5f);
+        yield return new WaitForSecondsRealtime(0.2f);
         axisInUse = false;
         yield return null;
     }
