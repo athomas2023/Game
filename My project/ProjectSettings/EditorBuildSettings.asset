@@ -11,4 +11,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/TWalt97.unity
     guid: 4bfe77d5e1112e84fa796d33e391fb2a
+  - enabled: 1
+    path: Assets/Scenes/Lose Screen.unity
+    guid: 6693cd13d71380949916b98c36a5d180
+  - enabled: 1
+    path: Assets/Scenes/Win Screen.unity
+    guid: 5db79b902342cd94e961f6b55a3c702d
   m_configObjects: {}

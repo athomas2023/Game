@@ -7,14 +7,16 @@ public class SaveLoadData : MonoBehaviour
 {
     public HighScoreSO highScore;
     public TextMeshProUGUI highScoreText;
+    public HighScoreSO score;
 
-    private void OnEnable() 
+    private void OnEnable()
     {
+        score.highScore = 0;
         highScore.highScore = PlayerPrefs.GetInt("HighScore");
         highScoreText.text = "High Score: " + highScore.highScore;
     }
 
-    private void OnDisable() 
+    private void OnDisable()
     {
         PlayerPrefs.SetInt("HighScore", highScore.highScore);
     }

@@ -44,11 +44,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ba0751c3e5f3ca4ba9143e2ede6339f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  customerSpawnRate: 2
+  customerSpawnRate: 5
   maxCustomers: 5
   customers:
   - {fileID: 657340512618778322, guid: 7f0591a85775c4c4580c0bdaf7e01943, type: 3}
   - {fileID: 4085323372983281134, guid: 97635a6fba2e81b4eb8c0bd0eb9b7961, type: 3}
+  - {fileID: 657340512618778322, guid: b12b1f76c3c964348b7603a9948cb9de, type: 3}
+  - {fileID: 657340512618778322, guid: 7396bd0ed88119b45a33d0adc06cda42, type: 3}
+  - {fileID: 657340512618778322, guid: c75f64e44d1e2e640aedbabfb316ed00, type: 3}
   customerParent: {fileID: 0}
   totalCustomers: 0
   score: 0
@@ -56,3 +59,6 @@ MonoBehaviour:
   scoreText: {fileID: 0}
   highScoreText: {fileID: 0}
   highScoreSO: {fileID: 11400000, guid: 5e5530c6986380a49b2f8d5d939533f4, type: 2}
+  gameScore: {fileID: 11400000, guid: ef98552c171a6774abbf2a2e504a4c59, type: 2}
+  gameTimerUI: {fileID: 0}
+  gameTimer: 15
