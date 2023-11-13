@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SelectionManager : MonoBehaviour
 {
@@ -17,6 +18,11 @@ public class SelectionManager : MonoBehaviour
             SelectNewPotion();
             HighlightSelectedPotion();
             remainingPotions.RemoveAll(s => s == null);
+
+            if (remainingPotions.Count == 0)
+            {
+                SceneManager.LoadScene("Lose Screen");
+            }
         }  
     }
 

@@ -20,6 +20,7 @@ public class CustomerManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI scoreText;
     [SerializeField] private TextMeshProUGUI highScoreText;
     public HighScoreSO highScoreSO;
+    public HighScoreSO gameScore;
     [SerializeField] private TextMeshProUGUI gameTimerUI;
     [SerializeField] private float gameTimer;
 
@@ -34,7 +35,7 @@ public class CustomerManager : MonoBehaviour
         gameTimerUI.text = "Time: " + (int)gameTimer;
         if (gameTimer < 0)
         {
-            SceneManager.LoadScene("Main Menu");
+            SceneManager.LoadScene("Win Screen");
         }
         //Changes customer spawn location based on the current number of active customers
         if (totalCustomers > 0)
@@ -59,6 +60,8 @@ public class CustomerManager : MonoBehaviour
         }
 
         scoreText.text = "Score: " + score;
+        gameScore.highScore = score;
+
         if (score > highScoreSO.highScore)
         {
             highScoreSO.highScore = score;
