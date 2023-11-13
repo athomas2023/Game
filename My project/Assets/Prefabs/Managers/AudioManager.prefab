@@ -305,6 +305,8 @@ MonoBehaviour:
   musicSounds:
   - clipName: BackgroundMusic
     clip: {fileID: 8300000, guid: 9c6915c69b5e246419efae7cfc1e5f19, type: 3}
+  - clipName: GameMusic
+    clip: {fileID: 8300000, guid: 2fea1f4532680964eaff2ae14f303e47, type: 3}
   sfxSounds:
   - clipName: PotionBrewing
     clip: {fileID: 8300000, guid: 71ae4d43979a4994cbca6d76c7d9514a, type: 3}

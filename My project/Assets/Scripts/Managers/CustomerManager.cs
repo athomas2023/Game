@@ -23,6 +23,11 @@ public class CustomerManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI gameTimerUI;
     [SerializeField] private float gameTimer;
 
+    private void Start()
+    {
+        AudioManager.Instance.PlayMusic("GameMusic");
+        AudioManager.Instance.musicSource.volume = 0.25f;
+    }
     private void Update()
     {
         gameTimer -= Time.deltaTime;
@@ -46,7 +51,7 @@ public class CustomerManager : MonoBehaviour
         timer -= Time.deltaTime;
         if (timer < 0 && totalCustomers < maxCustomers)
         {
-            int r = UnityEngine.Random.Range(1, customers.Count+1);
+            int r = UnityEngine.Random.Range(1, customers.Count + 1);
             GameObject cc = Instantiate(customers[r - 1], customerSpawnPos, Quaternion.identity, customerParent);
             customerControllers.Add(cc.GetComponent<CustomerController>());
             totalCustomers++;

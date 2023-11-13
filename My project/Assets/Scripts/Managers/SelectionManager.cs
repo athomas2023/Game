@@ -9,6 +9,7 @@ public class SelectionManager : MonoBehaviour
     public List<GameObject> remainingPotions;
     public int selectedPotion = 1;
     private bool axisInUse = false;
+
     private void Update()
     {
         if (Time.timeScale == 1)

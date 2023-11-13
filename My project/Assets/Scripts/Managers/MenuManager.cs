@@ -12,6 +12,7 @@ public class MenuManager : MonoBehaviour
     private void OnEnable()
     {
         axisInUse = false;
+        highlightedButton = 0;
     }
     private void Update()
     {
