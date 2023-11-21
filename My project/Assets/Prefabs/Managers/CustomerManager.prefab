@@ -46,19 +46,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   customerSpawnRate: 5
   maxCustomers: 5
+  boss: {fileID: 657340512618778322, guid: 0b22dbf0f493aca4598e702373d1ef6b, type: 3}
   customers:
-  - {fileID: 657340512618778322, guid: 7f0591a85775c4c4580c0bdaf7e01943, type: 3}
-  - {fileID: 4085323372983281134, guid: 97635a6fba2e81b4eb8c0bd0eb9b7961, type: 3}
-  - {fileID: 657340512618778322, guid: b12b1f76c3c964348b7603a9948cb9de, type: 3}
-  - {fileID: 657340512618778322, guid: 7396bd0ed88119b45a33d0adc06cda42, type: 3}
-  - {fileID: 657340512618778322, guid: c75f64e44d1e2e640aedbabfb316ed00, type: 3}
+  - {fileID: 657340512618778322, guid: eb54156879a6f784fb3fd7f3f2ee3d7a, type: 3}
   customerParent: {fileID: 0}
   totalCustomers: 0
   score: 0
   customerControllers: []
+  bossControllers: []
   scoreText: {fileID: 0}
   highScoreText: {fileID: 0}
   highScoreSO: {fileID: 11400000, guid: 5e5530c6986380a49b2f8d5d939533f4, type: 2}
   gameScore: {fileID: 11400000, guid: ef98552c171a6774abbf2a2e504a4c59, type: 2}
   gameTimerUI: {fileID: 0}
-  gameTimer: 15
+  gameTimerDisplay: {fileID: 0}
+  gameTimer: 16

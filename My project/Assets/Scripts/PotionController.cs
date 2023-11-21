@@ -29,7 +29,7 @@ public class PotionController : MonoBehaviour
 
     [SerializeField] SelectionManager selectionManager;
 
-    public int potionType;
+    public string potionType;
     bool potionCooked = false;
     bool potionCooking = false;
     [SerializeField] private float trashTimer = 3f;
@@ -185,37 +185,37 @@ public class PotionController : MonoBehaviour
         if (oxygenCount == 1 && hydrogenCount == 2 && carbonCount == 0 && sodiumCount == 0 && chlorineCount == 0) // Water
         {
             Output.text = "Water";
-            potionType = 1;
+            potionType = "Water";
         }
         else if (sodiumCount == 1 && chlorineCount == 1 && oxygenCount == 0 && hydrogenCount == 0 && carbonCount == 0) // Salt
         {
             Output.text = "Salt";
-            potionType = 2;
+            potionType = "Salt";
         }
         else if (carbonCount == 6 && hydrogenCount == 12 && oxygenCount == 6 && sodiumCount == 0 && chlorineCount == 0) // Glucose
         {
             Output.text = "Glucose";
-            potionType = 3;
+            potionType = "Glucose";
         }
         else if (carbonCount == 1 && hydrogenCount == 1 && chlorineCount == 3 && oxygenCount == 0 && sodiumCount == 0) // Chloroform
         {
             Output.text = "Chloroform";
-            potionType = 4;
+            potionType = "Chloroform";
         }
         else if (carbonCount == 7 && hydrogenCount == 14 && oxygenCount == 0 && sodiumCount == 0 && chlorineCount == 0) // Jet Fuel
         {
             Output.text = "Jet Fuel";
-            potionType = 5;
+            potionType = "Jet Fuel";
         }
         else if (carbonCount == 0 && hydrogenCount == 0 && oxygenCount == 1 && sodiumCount == 1 && chlorineCount == 1) // Jet Fuel
         {
             Output.text = "Liquid Bleach";
-            potionType = 6;
+            potionType = "Liquid Bleach";
         }
         else
         {
             Output.text = "Unknown";
-            potionType = 0;
+            potionType = "Unknown";
         }
     }
 
@@ -237,11 +237,30 @@ public class PotionController : MonoBehaviour
                 {
                     customerManager.customerControllers[i].ServeCustomer();
                     potionCooked = false;
-                    potionType = 0;
+                    potionType = "Empty";
                     StopAllCoroutines();
                     potionDisplay.fillAmount = 0;
                     burnMeter.fillAmount = 0;
                     ResetElements();
+                    break;
+                }
+            }
+        }
+
+        if (customerManager.bossControllers.Count > 0)
+        {
+            for (int i = 0; i < customerManager.bossControllers[0].ordersRemaining.Count; i++)
+            {
+                if (customerManager.bossControllers[0].ordersRemaining[i].name == potionType)
+                {
+                    customerManager.bossControllers[0].ServeCustomer(potionType);
+                    potionCooked = false;
+                    potionType = "Empty";
+                    StopAllCoroutines();
+                    potionDisplay.fillAmount = 0;
+                    burnMeter.fillAmount = 0;
+                    ResetElements();
+                    break;
                 }
             }
         }
@@ -262,7 +281,7 @@ public class PotionController : MonoBehaviour
         }
         potionCooked = false;
         potionCooking = false;
-        potionType = 0;
+        potionType = "Empty";
         StopAllCoroutines();
         potionDisplay.fillAmount = 0;
         burnMeter.fillAmount = 0;

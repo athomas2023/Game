@@ -46,7 +46,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -288,7 +288,7 @@ Transform:
   - {fileID: 786385240754976846}
   - {fileID: 6862698741145028988}
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &8379272994886722581
 MonoBehaviour:
@@ -305,7 +305,7 @@ MonoBehaviour:
   musicSounds:
   - clipName: BackgroundMusic
     clip: {fileID: 8300000, guid: 9c6915c69b5e246419efae7cfc1e5f19, type: 3}
-  - clipName: GameMusic
+  - clipName: BossMusic
     clip: {fileID: 8300000, guid: 2fea1f4532680964eaff2ae14f303e47, type: 3}
   sfxSounds:
   - clipName: PotionBrewing

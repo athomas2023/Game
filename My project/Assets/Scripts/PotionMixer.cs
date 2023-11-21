@@ -21,7 +21,7 @@ public class PotionMixer : MonoBehaviour
     [SerializeField] UnityEngine.UI.Image cookMeter;
     [SerializeField] UnityEngine.UI.Image burnMeter;
 
-    public int potionType;
+    public string potionType;
     bool potionCooked = false;
 
     [SerializeField] private CustomerManager customerManager;
@@ -127,7 +127,7 @@ public class PotionMixer : MonoBehaviour
                 if (potionType == customerManager.customerControllers[i].potionOrder)
                 {
                     customerManager.customerControllers[i].ServeCustomer();
-                    potionType = 0;
+                    potionType = "Empty";
                     ResetElements();
                 }
             }
@@ -147,37 +147,37 @@ public class PotionMixer : MonoBehaviour
         if (oxygenCount >= 1 && hydrogenCount >= 2 && carbonCount == 0 && sodiumCount == 0 && chlorineCount == 0) // Water
         {
             Output.text = "Water in the pot";
-            potionType = 1;
+            potionType = "Water in the pot";
         }
         else if (sodiumCount >= 1 && chlorineCount >= 1 && oxygenCount == 0 && hydrogenCount == 0 && carbonCount == 0) // Salt
         {
             Output.text = "Salt in the pot";
-            potionType = 2;
+            potionType = "Salt in the pot";
         }
         else if (carbonCount >= 6 && hydrogenCount >= 12 && oxygenCount >= 6 && sodiumCount == 0 && chlorineCount == 0) // Glucose
         {
             Output.text = "Glucose in the pot";
-            potionType = 3;
+            potionType = "Glucose in the pot";
         }   
         else if (carbonCount >= 1 && hydrogenCount >= 1 && chlorineCount >= 3 && oxygenCount == 0 && sodiumCount == 0) // Chloroform
         {
             Output.text = "Chloroform in the pot";
-            potionType = 4;
+            potionType = "Chloroform in the pot";
         }
         else if (carbonCount >= 7 && hydrogenCount >= 14 && oxygenCount == 0 && sodiumCount == 0 && chlorineCount == 0) // Jet Fuel
         {
             Output.text = "Jet Fuel in the pot";
-            potionType = 5;
+            potionType = "Jet Fuel in the pot";
         }
         else if (carbonCount >= 0 && hydrogenCount == 0 && oxygenCount == 1 && sodiumCount == 1 && chlorineCount == 1) // Jet Fuel
         {
             Output.text = "Liquid Bleach in the pot";
-            potionType = 6;
+            potionType = "Liquid Bleach in the pot";
         }
         else
         {
             Output.text = "Unknown mixture in the pot";
-            potionType = 0;
+            potionType = "Unknown mixture in the pot";
         }
     }
 

@@ -1884,9 +1884,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: AudioManager
       objectReference: {fileID: 0}
+    - target: {fileID: 2081370171943046257, guid: 13d33561ed8660f4e8d509d2d9400ebc, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2305014584457700952, guid: 13d33561ed8660f4e8d509d2d9400ebc, type: 3}
       propertyPath: Loop
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8379272994886722581, guid: 13d33561ed8660f4e8d509d2d9400ebc, type: 3}
+      propertyPath: musicSounds.Array.data[1].clipName
+      value: BossMusic
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3247,7 +3255,6 @@ RectTransform:
   - {fileID: 524311759}
   - {fileID: 1913133802}
   - {fileID: 299389632}
-  - {fileID: 659993830}
   - {fileID: 1610629652}
   - {fileID: 78660260}
   - {fileID: 577659708}
@@ -3368,11 +3375,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 659993829}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 156.12735, y: 521.14746, z: -1.2414365}
+  m_LocalPosition: {x: 156.12738, y: 4.272461, z: -1.2414365}
   m_LocalScale: {x: 1.7853923, y: 1.7853923, z: 1.7853923}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 642078960}
+  m_Father: {fileID: 1913133802}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &659993831
@@ -7048,6 +7055,7 @@ RectTransform:
   - {fileID: 1678813710}
   - {fileID: 1062910453}
   - {fileID: 2034777235}
+  - {fileID: 659993830}
   m_Father: {fileID: 642078960}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -7842,10 +7850,6 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5910244592141507281, guid: 68d7587e9eb075c4daf1337728e83d30, type: 3}
-      propertyPath: gameTimer
-      value: 121
-      objectReference: {fileID: 0}
-    - target: {fileID: 5910244592141507281, guid: 68d7587e9eb075c4daf1337728e83d30, type: 3}
       propertyPath: scoreText
       value: 
       objectReference: {fileID: 208456529}
@@ -7860,6 +7864,14 @@ PrefabInstance:
     - target: {fileID: 5910244592141507281, guid: 68d7587e9eb075c4daf1337728e83d30, type: 3}
       propertyPath: customerParent
       value: 
+      objectReference: {fileID: 1904393639}
+    - target: {fileID: 5910244592141507281, guid: 68d7587e9eb075c4daf1337728e83d30, type: 3}
+      propertyPath: gameTimerDisplay
+      value: 
+      objectReference: {fileID: 1913133801}
+    - target: {fileID: 5910244592141507281, guid: 68d7587e9eb075c4daf1337728e83d30, type: 3}
+      propertyPath: highScoreRequiredToSpawnBoss
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -1,23 +1,36 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class CustomerController : MonoBehaviour
 {
     [Header("Customer Info")]
-    [SerializeField, Tooltip ("Determines how long until the customer gets upset and leaves")] private float patienceTimer;
-    [SerializeField, Tooltip ("How many points the base potion is worth")] private int potionScoreValue;
+    [SerializeField, Tooltip("Determines how long until the customer gets upset and leaves")] private float patienceTimer;
+    [SerializeField, Tooltip("How many points the base potion is worth")] private int potionScoreValue;
+    
 
     [Header("Object References")]
     [SerializeField] private UnityEngine.UI.Image patienceMeter;
+    [SerializeField] private List<Sprite> customerImages;
+    [SerializeField] private List<Sprite> orderImages;
+    [SerializeField] private SpriteRenderer customerImage;
+    [SerializeField] private UnityEngine.UI.Image orderImage;
+    [SerializeField] private TextMeshPro orderText;
     private float patienceTimerRemaining;
     private CustomerManager customerManager;
     protected bool orderCompleted;  //Keeps track of if an order was completed
     public int customerNumber;  //Keeps track of the order of customers, customer 1 is the active customer
-    public int potionOrder;
-    
+    public string potionOrder;
+
 
     private void Start()
     {
+        customerImage.sprite = customerImages[Random.Range(0, customerImages.Count)];
+        int order = Random.Range(0, orderImages.Count);
+        orderImage.sprite = orderImages[order];
+        potionOrder = orderImages[order].name;
+        orderText.text = orderImages[order].name;
         customerManager = GameObject.FindGameObjectWithTag("CustomerManager").GetComponent<CustomerManager>();
         customerNumber = customerManager.totalCustomers;
         StartCoroutine(CustomerPatienceCountdown());
@@ -75,7 +88,7 @@ public class CustomerController : MonoBehaviour
         {
             c.customerNumber = Mathf.Clamp(customerManager.customerControllers.IndexOf(c) + 1, 1, 5);
         }
-        
+
         Destroy(gameObject);
     }
 
