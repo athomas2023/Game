@@ -56,8 +56,7 @@ public class BossController : MonoBehaviour
 
     private void CustomerPatienceExpires()
     {
-        //Game over
-        Destroy(gameObject);
+        SceneManager.LoadScene("Lose Screen");
     }
 
     public void ServeCustomer(string orderName)

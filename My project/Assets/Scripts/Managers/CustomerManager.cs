@@ -54,7 +54,6 @@ public class CustomerManager : MonoBehaviour
             }
             else
             {
-                Debug.Log("You lose");
                 SceneManager.LoadScene("Lose Screen");
             }
         }

@@ -174,7 +174,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43ac249de052985489381c5489d9f5c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  patienceTimer: 60
+  patienceTimer: 10
   patienceMeter: {fileID: 8944320248759997573}
   ordersRemaining:
   - {fileID: 8482897260229263273}

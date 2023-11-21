@@ -37,7 +37,7 @@ public class AudioManager : MonoBehaviour
         {
             Debug.Log("Sound not found");
         }
-        else
+        else if (musicSource.clip != s.clip)
         {
             musicSource.clip = s.clip;
             musicSource.Play();

@@ -19,6 +19,7 @@ public class SceneController : MonoBehaviour
 
     public void ReturnToMenu()
     {
+        AudioManager.Instance.PlayMusic("BackgroundMusic");
         SceneManager.LoadScene("Main Menu");
     }
 }
