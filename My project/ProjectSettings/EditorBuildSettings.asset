@@ -6,15 +6,24 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Main Menu.unity
+    path: Assets/Scenes/Build Scenes/Main Menu.unity
     guid: 3c60c26d5c3fb5447b98e4d29225a7b5
   - enabled: 1
-    path: Assets/Scenes/TWalt97.unity
+    path: Assets/Scenes/Build Scenes/Level 1.unity
     guid: 4bfe77d5e1112e84fa796d33e391fb2a
   - enabled: 1
-    path: Assets/Scenes/Lose Screen.unity
+    path: Assets/Scenes/Build Scenes/Lose Screen.unity
     guid: 6693cd13d71380949916b98c36a5d180
   - enabled: 1
-    path: Assets/Scenes/Win Screen.unity
+    path: Assets/Scenes/Build Scenes/Win Screen.unity
     guid: 5db79b902342cd94e961f6b55a3c702d
+  - enabled: 1
+    path: Assets/Scenes/Build Scenes/Level 2.unity
+    guid: 015996f7b209d7748993dfda0042a6c5
+  - enabled: 1
+    path: Assets/Scenes/Build Scenes/Win Game Screen.unity
+    guid: 77cee1fd56eecd54ab7f4e3496a50bc5
+  - enabled: 1
+    path: Assets/Scenes/Build Scenes/Lose Game Screen.unity
+    guid: 78902a97db10bbb4cbf502e106db312c
   m_configObjects: {}

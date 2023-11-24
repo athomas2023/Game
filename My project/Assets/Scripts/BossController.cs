@@ -13,6 +13,7 @@ public class BossController : MonoBehaviour
     [SerializeField] private UnityEngine.UI.Image patienceMeter;
     public List<GameObject> ordersRemaining;
     protected bool orderCompleted;
+    [SerializeField] private HighScoreSO levelTwoScore;
 
     void Start()
     {
@@ -23,7 +24,8 @@ public class BossController : MonoBehaviour
     {
         if (ordersRemaining.Count <= 0)
         {
-            SceneManager.LoadScene("Win Screen");
+            levelTwoScore.highScore += Mathf.FloorToInt(250 + patienceTimerRemaining * 2);
+            SceneManager.LoadScene("Win Game Screen");
         }
     }
 

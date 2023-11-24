@@ -10,6 +10,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cc9cb5dba45b51649ae6eb3da0ec996b, type: 3}
-  m_Name: Score
+  m_Name: LevelTwoScore
   m_EditorClassIdentifier: 
-  highScore: 100
+  highScore: 0

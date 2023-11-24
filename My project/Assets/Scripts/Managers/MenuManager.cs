@@ -8,11 +8,13 @@ public class MenuManager : MonoBehaviour
     public List<Button> pressableButtons;
     public int highlightedButton;
     bool axisInUse;
+    bool newSceneClickDelay = true;
 
     private void OnEnable()
     {
         axisInUse = false;
         highlightedButton = 0;
+        Invoke("EnableClicking", 1f);
     }
     private void Update()
     {
@@ -47,7 +49,7 @@ public class MenuManager : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Joystick1Button0))
         {
-            if (pressableButtons[highlightedButton].gameObject.transform.parent.gameObject.activeSelf == true)
+            if (pressableButtons[highlightedButton].gameObject.transform.parent.gameObject.activeSelf == true && newSceneClickDelay == false)
             {
                 pressableButtons[highlightedButton].onClick.Invoke();
             }
@@ -74,5 +76,10 @@ public class MenuManager : MonoBehaviour
         yield return new WaitForSecondsRealtime(0.2f);
         axisInUse = false;
         yield return null;
+    }
+
+    private void EnableClicking()
+    {
+        newSceneClickDelay = false;
     }
 }

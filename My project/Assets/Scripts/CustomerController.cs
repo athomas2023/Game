@@ -8,7 +8,7 @@ public class CustomerController : MonoBehaviour
     [Header("Customer Info")]
     [SerializeField, Tooltip("Determines how long until the customer gets upset and leaves")] private float patienceTimer;
     [SerializeField, Tooltip("How many points the base potion is worth")] private int potionScoreValue;
-    
+
 
     [Header("Object References")]
     [SerializeField] private UnityEngine.UI.Image patienceMeter;
@@ -81,6 +81,7 @@ public class CustomerController : MonoBehaviour
     private void CustomerPatienceExpires()
     {
         //When customer patience expires, removes them from the list of customers, reduces total customer count, lowers all customer numbers by 1
+        //Decreases customer satisfaction by a value
         //Then destroys the customer
         customerManager.totalCustomers--;
         customerManager.customerControllers.Remove(this);
@@ -88,7 +89,7 @@ public class CustomerController : MonoBehaviour
         {
             c.customerNumber = Mathf.Clamp(customerManager.customerControllers.IndexOf(c) + 1, 1, 5);
         }
-
+        CustomerSatisfactionManager.Instance.customerSatisfaction = Mathf.Clamp(CustomerSatisfactionManager.Instance.customerSatisfaction - 0.25f, 0, 1);
         Destroy(gameObject);
     }
 
@@ -97,19 +98,16 @@ public class CustomerController : MonoBehaviour
         //Reduces total customer count and removes customer from list
         //Gives points based on customer potionScoreValue and patience timer remaining
         //Increasing the score over time would be cool
+        //Increases customer satisfaction by a value
         customerManager.totalCustomers--;
         customerManager.customerControllers.Remove(this);
         customerManager.score += Mathf.FloorToInt(patienceTimerRemaining) + potionScoreValue;
-        //Debug.Log("You had " + Mathf.FloorToInt(patienceTimerRemaining) + " seconds remaining");
         foreach (CustomerController c in customerManager.customerControllers)
         {
             c.customerNumber = Mathf.Clamp(customerManager.customerControllers.IndexOf(c) + 1, 1, 5);
         }
-
+        CustomerSatisfactionManager.Instance.customerSatisfaction = Mathf.Clamp(CustomerSatisfactionManager.Instance.customerSatisfaction + 0.1f, 0, 1);
         Destroy(gameObject);
     }
 
-    //Create a method that will serve the selected potion to the customer that wants it with the lowest patience timer
-    //Will need to have a way to accept input of the selected potion
-    //Every customer will need to keep track of what potion they want
 }

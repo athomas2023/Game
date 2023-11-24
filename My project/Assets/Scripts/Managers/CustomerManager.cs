@@ -22,35 +22,29 @@ public class CustomerManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI scoreText;
     [SerializeField] private TextMeshProUGUI highScoreText;
     public HighScoreSO highScoreSO;
-    public HighScoreSO gameScore;
+    public HighScoreSO gameScore1;
+    public HighScoreSO gameScore2;
     [SerializeField] private TextMeshProUGUI gameTimerUI;
     [SerializeField] private GameObject gameTimerDisplay;
     [SerializeField] private float gameTimer;
     [SerializeField] private float highScoreRequiredToSpawnBoss;
+    [SerializeField] private bool spawnBossAtEndOfLevel;
     private bool bossSpawned;
 
-    private void Start()
-    {
-
-    }
     private void Update()
     {
         if (gameTimer < 0 && bossSpawned == false)
         {
-            if (gameScore.highScore >= highScoreRequiredToSpawnBoss)
+            if (score >= highScoreRequiredToSpawnBoss)
             {
-                gameTimerDisplay.SetActive(false);
-                AudioManager.Instance.PlayMusic("BossMusic");
-                bossSpawned = true;
-                //Spawn boss
-                foreach (CustomerController c in customerControllers)
+                if (spawnBossAtEndOfLevel == true)
                 {
-                    Destroy(c.gameObject);
+                    SpawnBoss();
                 }
-                customerControllers.Clear();
-                customerSpawnPos = Vector3.zero;
-                GameObject b = Instantiate(boss, customerSpawnPos, Quaternion.identity, customerParent);
-                bossControllers.Add(b.GetComponent<BossController>());
+                else
+                {
+                    SceneManager.LoadScene("Win Screen");
+                }
             }
             else
             {
@@ -77,21 +71,50 @@ public class CustomerManager : MonoBehaviour
             timer -= Time.deltaTime;
             if (timer < 0 && totalCustomers < maxCustomers)
             {
-                int r = UnityEngine.Random.Range(1, customers.Count + 1);
-                GameObject cc = Instantiate(customers[r - 1], customerSpawnPos, Quaternion.identity, customerParent);
-                customerControllers.Add(cc.GetComponent<CustomerController>());
-                totalCustomers++;
-                timer = customerSpawnRate;
+                SpawnCustomer();
             }
 
             scoreText.text = "Score: " + score;
-            gameScore.highScore = score;
-
-            if (score > highScoreSO.highScore)
+            if (SceneManager.GetActiveScene().name == "Level 1")
             {
-                highScoreSO.highScore = score;
+                gameScore1.highScore = score;
+            }
+            else if (SceneManager.GetActiveScene().name == "Level 2")
+            {
+                gameScore2.highScore = score;
+            }
+
+            if (gameScore1.highScore + gameScore2.highScore > highScoreSO.highScore)
+            {
+                highScoreSO.highScore = gameScore1.highScore + gameScore2.highScore;
                 highScoreText.text = "High Score: " + highScoreSO.highScore;
             }
         }
     }
+    private void SpawnBoss()
+    {
+        gameTimerDisplay.SetActive(false);
+        AudioManager.Instance.PlayMusic("BossMusic");
+        bossSpawned = true;
+        //Spawn boss
+        foreach (CustomerController c in customerControllers)
+        {
+            Destroy(c.gameObject);
+        }
+        customerControllers.Clear();
+        customerSpawnPos = Vector3.zero;
+        GameObject b = Instantiate(boss, customerSpawnPos, Quaternion.identity, customerParent);
+        bossControllers.Add(b.GetComponent<BossController>());
+    }
+
+    private void SpawnCustomer()
+    {
+        int r = UnityEngine.Random.Range(1, customers.Count + 1);
+        GameObject cc = Instantiate(customers[r - 1], customerSpawnPos, Quaternion.identity, customerParent);
+        customerControllers.Add(cc.GetComponent<CustomerController>());
+        totalCustomers++;
+        timer = customerSpawnRate;
+    }
 }
+
+
