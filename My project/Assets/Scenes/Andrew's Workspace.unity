@@ -529,8 +529,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d394588633842a543bfdf89186399390, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ElementCountText: {fileID: 846578957}
-  Output: {fileID: 1359351977}
+  elements:
+  - element: {fileID: 11400000, guid: 48fefdb5208792b4aba31ef1fa2eec68, type: 2}
+  - element: {fileID: 11400000, guid: cbc3f071ec3d25447852dc4b17dbe03d, type: 2}
+  - element: {fileID: 11400000, guid: e08c7341b96ce7046a9bb83c537581c5, type: 2}
+  - element: {fileID: 11400000, guid: b6e559489ed0e2146ab02bcd06e22231, type: 2}
+  - element: {fileID: 11400000, guid: eadb70090b28b004bae056bbd0b417e6, type: 2}
+  recipeDataList:
+  - {fileID: 11400000, guid: 8aed1f32f58d1d247b66bd0670a36b0c, type: 2}
+  - {fileID: 11400000, guid: 29a473cfabfe9b948bb3927c79c1b695, type: 2}
+  - {fileID: 11400000, guid: ef8c5794545d75742bba8a5219b909bd, type: 2}
+  - {fileID: 11400000, guid: 625906a948e74f84c92e783a8e53cce6, type: 2}
+  - {fileID: 11400000, guid: 8b1da942f8c48b04ba655f8ede206f10, type: 2}
+  - {fileID: 11400000, guid: f8e113b2c3883484aa72464e2de79f22, type: 2}
+  elementCountText: {fileID: 846578957}
+  outputText: {fileID: 1359351977}
+  potionType: 
 --- !u!4 &173053763
 Transform:
   m_ObjectHideFlags: 0
