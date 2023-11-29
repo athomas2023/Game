@@ -182,36 +182,32 @@ public class PotionControllerLV1 : MonoBehaviour
         int SulfurCount = CurrentMix[SulfurIndex];
         int NitrogenCount = CurrentMix[NitrogenIndex];
 
-        if (oxygenCount == 1 && hydrogenCount == 2 && FluorineCount == 0 && SulfurCount == 0 && NitrogenCount == 0) // Water
+        if (oxygenCount == 2 && hydrogenCount == 0 && FluorineCount == 2 && SulfurCount == 0 && NitrogenCount == 0) // Dioxygen Difluoride
         {
-            Output.text = "Water";
-            potionType = "Water";
+            Output.text = "Dioxygen Difluoride";
+            potionType = "Dioxygen Difluoride";
         }
-        else if (SulfurCount == 1 && NitrogenCount == 1 && oxygenCount == 0 && hydrogenCount == 0 && FluorineCount == 0) // Salt
+        else if (SulfurCount == 1 && NitrogenCount ==  && oxygenCount == 4 && hydrogenCount == 0 && FluorineCount == 0) // Sulfate
         {
-            Output.text = "Salt";
-            potionType = "Salt";
+            Output.text = "Sulfate";
+            potionType = "Sulfate";
         }
-        else if (FluorineCount == 6 && hydrogenCount == 12 && oxygenCount == 6 && SulfurCount == 0 && NitrogenCount == 0) // Glucose
+        else if (FluorineCount == 0 && hydrogenCount == 3 && oxygenCount == 6 && SulfurCount == 0 && NitrogenCount == 1) // Ammonia
         {
-            Output.text = "Glucose";
-            potionType = "Glucose";
+            Output.text = "Ammonia";
+            potionType = "Ammonia";
         }
-        else if (FluorineCount == 1 && hydrogenCount == 1 && NitrogenCount == 3 && oxygenCount == 0 && SulfurCount == 0) // Chloroform
+        else if (FluorineCount == 0 && hydrogenCount == 0 && NitrogenCount == 0 && oxygenCount == 2 && SulfurCount == 1) //Preservative
         {
-            Output.text = "Chloroform";
-            potionType = "Chloroform";
+            Output.text = "Preservative";
+            potionType = "Preservative";
         }
-        else if (FluorineCount == 7 && hydrogenCount == 14 && oxygenCount == 0 && SulfurCount == 0 && NitrogenCount == 0) // Jet Fuel
+        else if (FluorineCount ==  0 && hydrogenCount == 2 && oxygenCount == 4 && SulfurCount == 1 && NitrogenCount == 0) // Sulfuric Acid
         {
-            Output.text = "Jet Fuel";
-            potionType = "Jet Fuel";
+            Output.text = "Sulfuric Acid";
+            potionType = "Sulfuric Acid";
         }
-        else if (FluorineCount == 0 && hydrogenCount == 0 && oxygenCount == 1 && SulfurCount == 1 && NitrogenCount == 1) // Jet Fuel
-        {
-            Output.text = "Liquid Bleach";
-            potionType = "Liquid Bleach";
-        }
+       
         else
         {
             Output.text = "Unknown";
