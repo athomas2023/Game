@@ -187,7 +187,7 @@ public class PotionControllerLV1 : MonoBehaviour
             Output.text = "Dioxygen Difluoride";
             potionType = "Dioxygen Difluoride";
         }
-        else if (SulfurCount == 1 && NitrogenCount ==  && oxygenCount == 4 && hydrogenCount == 0 && FluorineCount == 0) // Sulfate
+        else if (SulfurCount == 1 && NitrogenCount == 0 && oxygenCount == 4 && hydrogenCount == 0 && FluorineCount == 0) // Sulfate
         {
             Output.text = "Sulfate";
             potionType = "Sulfate";
