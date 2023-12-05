@@ -258,6 +258,91 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 83733341}
   m_CullTransparentMesh: 1
+--- !u!1001 &91434653
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 921958835}
+    m_Modifications:
+    - target: {fileID: 366338317718099673, guid: 609cd187d5de48941b84e07f6044895b, type: 3}
+      propertyPath: m_Name
+      value: HowToPlayMenuController
+      objectReference: {fileID: 0}
+    - target: {fileID: 366338317718099673, guid: 609cd187d5de48941b84e07f6044895b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6607243941221765722, guid: 609cd187d5de48941b84e07f6044895b, type: 3}
+      propertyPath: m_RootOrder
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6607243941221765722, guid: 609cd187d5de48941b84e07f6044895b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -511.21387
+      objectReference: {fileID: 0}
+    - target: {fileID: 6607243941221765722, guid: 609cd187d5de48941b84e07f6044895b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -296.6352
+      objectReference: {fileID: 0}
+    - target: {fileID: 6607243941221765722, guid: 609cd187d5de48941b84e07f6044895b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 2.6648657
+      objectReference: {fileID: 0}
+    - target: {fileID: 6607243941221765722, guid: 609cd187d5de48941b84e07f6044895b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6607243941221765722, guid: 609cd187d5de48941b84e07f6044895b, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6607243941221765722, guid: 609cd187d5de48941b84e07f6044895b, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6607243941221765722, guid: 609cd187d5de48941b84e07f6044895b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6607243941221765722, guid: 609cd187d5de48941b84e07f6044895b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6607243941221765722, guid: 609cd187d5de48941b84e07f6044895b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6607243941221765722, guid: 609cd187d5de48941b84e07f6044895b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8108775936180153926, guid: 609cd187d5de48941b84e07f6044895b, type: 3}
+      propertyPath: pressableButtons.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8108775936180153926, guid: 609cd187d5de48941b84e07f6044895b, type: 3}
+      propertyPath: pressableButtons.Array.data[0]
+      value: 
+      objectReference: {fileID: 367596896}
+    - target: {fileID: 8108775936180153926, guid: 609cd187d5de48941b84e07f6044895b, type: 3}
+      propertyPath: pressableButtons.Array.data[1]
+      value: 
+      objectReference: {fileID: 1151266300}
+    - target: {fileID: 8108775936180153926, guid: 609cd187d5de48941b84e07f6044895b, type: 3}
+      propertyPath: pressableButtons.Array.data[2]
+      value: 
+      objectReference: {fileID: 406101903}
+    - target: {fileID: 8108775936180153926, guid: 609cd187d5de48941b84e07f6044895b, type: 3}
+      propertyPath: pressableButtons.Array.data[3]
+      value: 
+      objectReference: {fileID: 334412191}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 609cd187d5de48941b84e07f6044895b, type: 3}
 --- !u!1 &97306774
 GameObject:
   m_ObjectHideFlags: 0
@@ -841,6 +926,16 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 146658521}
   m_CullTransparentMesh: 1
+--- !u!1 &150202610 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 366338317718099673, guid: 609cd187d5de48941b84e07f6044895b, type: 3}
+  m_PrefabInstance: {fileID: 91434653}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &150202611 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6607243941221765722, guid: 609cd187d5de48941b84e07f6044895b, type: 3}
+  m_PrefabInstance: {fileID: 91434653}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &158905701
 GameObject:
   m_ObjectHideFlags: 0
@@ -1620,7 +1715,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 2141412844}
+      - m_Target: {fileID: 150202610}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6
@@ -5080,6 +5175,7 @@ Transform:
   - {fileID: 961005276}
   - {fileID: 673291996}
   - {fileID: 1522589082}
+  - {fileID: 150202611}
   - {fileID: 456291678}
   - {fileID: 1651918427}
   - {fileID: 821672558}
@@ -5328,7 +5424,7 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4281479730
+    rgba: 4294967295
   m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
@@ -10530,6 +10626,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8108775936180153926, guid: 609cd187d5de48941b84e07f6044895b, type: 3}
+      propertyPath: pressableButtons.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8108775936180153926, guid: 609cd187d5de48941b84e07f6044895b, type: 3}
       propertyPath: pressableButtons.Array.data[0]
       value: 
       objectReference: {fileID: 1866254216}
@@ -10540,9 +10640,13 @@ PrefabInstance:
     - target: {fileID: 8108775936180153926, guid: 609cd187d5de48941b84e07f6044895b, type: 3}
       propertyPath: pressableButtons.Array.data[2]
       value: 
-      objectReference: {fileID: 406101903}
+      objectReference: {fileID: 283940160}
     - target: {fileID: 8108775936180153926, guid: 609cd187d5de48941b84e07f6044895b, type: 3}
       propertyPath: pressableButtons.Array.data[3]
+      value: 
+      objectReference: {fileID: 406101903}
+    - target: {fileID: 8108775936180153926, guid: 609cd187d5de48941b84e07f6044895b, type: 3}
+      propertyPath: pressableButtons.Array.data[4]
       value: 
       objectReference: {fileID: 334412191}
     m_RemovedComponents: []

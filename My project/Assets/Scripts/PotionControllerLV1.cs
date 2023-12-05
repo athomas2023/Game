@@ -192,7 +192,7 @@ public class PotionControllerLV1 : MonoBehaviour
             Output.text = "Sulfate";
             potionType = "Sulfate";
         }
-        else if (FluorineCount == 0 && hydrogenCount == 3 && oxygenCount == 6 && SulfurCount == 0 && NitrogenCount == 1) // Ammonia
+        else if (FluorineCount == 0 && hydrogenCount == 3 && oxygenCount == 0 && SulfurCount == 0 && NitrogenCount == 1) // Ammonia
         {
             Output.text = "Ammonia";
             potionType = "Ammonia";

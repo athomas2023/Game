@@ -5297,6 +5297,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5910244592141507281, guid: 68d7587e9eb075c4daf1337728e83d30, type: 3}
+      propertyPath: customers.Array.data[0]
+      value: 
+      objectReference: {fileID: 657340512618778322, guid: 5cedfc2e8412b7048b320b5fc9fcb049, type: 3}
+    - target: {fileID: 5910244592141507281, guid: 68d7587e9eb075c4daf1337728e83d30, type: 3}
       propertyPath: highScoreRequiredToSpawnBoss
       value: 10
       objectReference: {fileID: 0}
