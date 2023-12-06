@@ -89,7 +89,7 @@ public class CustomerController : MonoBehaviour
         {
             c.customerNumber = Mathf.Clamp(customerManager.customerControllers.IndexOf(c) + 1, 1, 5);
         }
-        CustomerSatisfactionManager.Instance.customerSatisfaction = Mathf.Clamp(CustomerSatisfactionManager.Instance.customerSatisfaction - 0.25f, 0, 1);
+        CustomerSatisfactionManager.Instance.customerSatisfaction = Mathf.Clamp(CustomerSatisfactionManager.Instance.customerSatisfaction - 0.1f, 0, 1);
         Destroy(gameObject);
     }
 
@@ -106,7 +106,7 @@ public class CustomerController : MonoBehaviour
         {
             c.customerNumber = Mathf.Clamp(customerManager.customerControllers.IndexOf(c) + 1, 1, 5);
         }
-        CustomerSatisfactionManager.Instance.customerSatisfaction = Mathf.Clamp(CustomerSatisfactionManager.Instance.customerSatisfaction + 0.1f, 0, 1);
+        CustomerSatisfactionManager.Instance.customerSatisfaction = Mathf.Clamp(CustomerSatisfactionManager.Instance.customerSatisfaction + 0.25f, 0, 1);
         Destroy(gameObject);
     }
 
