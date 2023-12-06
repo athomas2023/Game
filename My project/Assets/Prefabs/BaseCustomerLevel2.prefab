@@ -111,7 +111,6 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 504f59a4099fabf4fa5b241598de2dcc, type: 3}
   - {fileID: 21300000, guid: d2f4c6b6b21446a47ae22297898f3522, type: 3}
   - {fileID: 21300000, guid: cc048c731ae943345849c727adfbea4a, type: 3}
-  - {fileID: 21300000, guid: d252fd9a46c764841a4d84d74f64ac01, type: 3}
   - {fileID: 21300000, guid: c955e803803fd7c4584e525248283f2c, type: 3}
   customerImage: {fileID: 6822047632201301983}
   orderImage: {fileID: 8728431298356747533}
